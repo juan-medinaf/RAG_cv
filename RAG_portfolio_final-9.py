@@ -97,7 +97,7 @@ for k, val in resume_dict.items():
 
 
 # Load pre-trained embedding model
-model = SentenceTransformer("all-MiniLM-L6-v2")
+model = SentenceTransformer("all-MiniLM-L6-v2", device="cpu")
 
 # Generate embeddings
 resume_embeddings = model.encode(resume_chunks)
