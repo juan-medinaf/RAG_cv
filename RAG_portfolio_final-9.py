@@ -99,9 +99,7 @@ device = torch.device("cpu")
 # Load pre-trained embedding model
 word_embedding_model = models.Transformer("sentence-transformers/all-MiniLM-L6-v2")
 pooling_model = models.Pooling(word_embedding_model.get_word_embedding_dimension())
-
-model = SentenceTransformer(modules=[word_embedding_model, pooling_model])
-model.to(device=device, dtype=torch.float32)
+model = SentenceTransformer(modules=[word_embedding_model, pooling_model]).to(device)
 
 # Generate embeddings
 resume_embeddings = model.encode(resume_chunks)
