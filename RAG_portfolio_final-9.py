@@ -4,11 +4,11 @@
 # In[ ]:
 
 
-# pip install pymupdf
-# pip install faiss-cpu
-# pip install sentence_transformers
-# pip install streamlit
-# pip install transformers
+pip install pymupdf
+pip install faiss-cpu
+pip install sentence_transformers
+pip install streamlit
+pip install transformers
 
 
 # In[1]:
