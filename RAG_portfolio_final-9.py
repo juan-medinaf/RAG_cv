@@ -20,7 +20,8 @@ import torch
 
 import faiss
 import pickle
-
+import os
+os.environ["CUDA_VISIBLE_DEVICES"] = ""
 
 # In[5]:
 
@@ -99,7 +100,7 @@ device = torch.device("cpu")
 # Load pre-trained embedding model
 word_embedding_model = models.Transformer("sentence-transformers/all-MiniLM-L6-v2")
 pooling_model = models.Pooling(word_embedding_model.get_word_embedding_dimension())
-model = SentenceTransformer(modules=[word_embedding_model, pooling_model]).to(device)
+model = SentenceTransformer(modules=[word_embedding_model, pooling_model])
 
 # Generate embeddings
 resume_embeddings = model.encode(resume_chunks)
@@ -144,7 +145,7 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 embedder = SentenceTransformer("all-MiniLM-L6-v2")
 model_name = "Qwen/Qwen2.5-0.5B"
 tokenizer = AutoTokenizer.from_pretrained(model_name)
-llm = AutoModelForCausalLM.from_pretrained(model_name).to(device)
+llm = AutoModelForCausalLM.from_pretrained(model_name)
 
 
 # In[14]:
