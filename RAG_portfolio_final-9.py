@@ -109,44 +109,26 @@ print("Embedding shape:", resume_embeddings.shape)  # Should be (num_chunks, 384
 
 # In[9]:
 
-#OLD
-# # Initialize FAISS index
-# dimension = resume_embeddings.shape[1]  
-# index = faiss.IndexFlatL2(dimension)
-# index.add(resume_embeddings)
 
-# # Save index and text chunks for future use
-# with open("resume_faiss.pkl", "wb") as f:
-#     pickle.dump((index, resume_chunks), f)
+# Initialize FAISS index
+dimension = resume_embeddings.shape[1]  
+index = faiss.IndexFlatL2(dimension)
+index.add(resume_embeddings)
 
-# print("FAISS index built and saved.")
+# Save index and text chunks for future use
+with open("resume_faiss.pkl", "wb") as f:
+    pickle.dump((index, resume_chunks), f)
 
-
-# # In[10]:
+print("FAISS index built and saved.")
 
 
-# # Load the saved FAISS index and text chunks
-# with open("resume_faiss.pkl", "rb") as f:
-#     index, resume_chunks = pickle.load(f)
-#NEW
-if os.path.exists("resume_faiss.pkl"):
-    with open("resume_faiss.pkl", "rb") as f:
-        index, resume_chunks = pickle.load(f)
-    print("Loaded FAISS index from file.")
-else:
-    # Encode the resume chunks
-    resume_embeddings = model.encode(resume_chunks)
-    print("Embedding shape:", resume_embeddings.shape)
+# In[10]:
 
-    # Create FAISS index
-    dimension = resume_embeddings.shape[1]
-    index = faiss.IndexFlatL2(dimension)
-    index.add(resume_embeddings)
 
-    # Save for reuse
-    with open("resume_faiss.pkl", "wb") as f:
-        pickle.dump((index, resume_chunks), f)
-    print("FAISS index built and saved.")
+# Load the saved FAISS index and text chunks
+with open("resume_faiss.pkl", "rb") as f:
+    index, resume_chunks = pickle.load(f)
+
 
 # In[11]:
 
