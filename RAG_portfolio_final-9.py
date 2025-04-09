@@ -4,12 +4,6 @@
 # In[ ]:
 
 
-# pip install pymupdf
-# pip install faiss-cpu
-# pip install sentence_transformers
-# pip install streamlit
-# pip install transformers
-
 
 # In[1]:
 
@@ -177,7 +171,7 @@ def retrieve_and_generate(query, top_k=2):
     )
 
     # Tokenize and generate
-    input_ids = tokenizer(prompt, return_tensors="pt").input_ids.to("cuda")
+    input_ids = tokenizer(prompt, return_tensors="pt").input_ids.to("cpu")
     output = llm.generate(input_ids, max_new_tokens=200)
 
     # Only decode the newly generated part
