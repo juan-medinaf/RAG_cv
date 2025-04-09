@@ -13,7 +13,7 @@ import numpy as np
 import fitz
 import re
 from sentence_transformers import SentenceTransformer
-
+import torch
 
 # In[2]:
 
@@ -95,9 +95,9 @@ for k, val in resume_dict.items():
 
 # In[8]:
 
-
+device = torch.device("cpu")
 # Load pre-trained embedding model
-model = SentenceTransformer("all-MiniLM-L6-v2", device="cpu")
+model = SentenceTransformer("all-MiniLM-L6-v2").to(device)
 
 # Generate embeddings
 resume_embeddings = model.encode(resume_chunks)
@@ -139,7 +139,7 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 # In[12]:
 
 device = "cpu"
-embedder = SentenceTransformer("all-MiniLM-L6-v2", device=device)
+embedder = SentenceTransformer("all-MiniLM-L6-v2").to(device)
 model_name = "Qwen/Qwen2.5-0.5B"
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 llm = AutoModelForCausalLM.from_pretrained(model_name).to(device)
