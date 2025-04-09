@@ -20,8 +20,6 @@ import torch
 
 import faiss
 import pickle
-import os
-os.environ["CUDA_VISIBLE_DEVICES"] = ""
 
 # In[5]:
 
