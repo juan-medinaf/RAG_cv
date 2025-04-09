@@ -177,7 +177,7 @@ def retrieve_and_generate(query, top_k=2):
     )
 
     # Tokenize and generate
-    input_ids = tokenizer(prompt, return_tensors="pt").input_ids.to("cpu")
+    input_ids = tokenizer(prompt, return_tensors="pt").input_ids.to("cuda")
     output = llm.generate(input_ids, max_new_tokens=200)
 
     # Only decode the newly generated part
