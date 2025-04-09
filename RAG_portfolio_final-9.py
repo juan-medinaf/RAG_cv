@@ -139,7 +139,7 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 # In[12]:
 
 device = "cpu"
-embedder = SentenceTransformer("all-MiniLM-L6-v2")
+embedder = SentenceTransformer("all-MiniLM-L6-v2", device=device)
 model_name = "Qwen/Qwen2.5-0.5B"
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 llm = AutoModelForCausalLM.from_pretrained(model_name).to(device)
