@@ -142,7 +142,7 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 embedder = SentenceTransformer("all-MiniLM-L6-v2")
 model_name = "Qwen/Qwen2.5-0.5B"
 tokenizer = AutoTokenizer.from_pretrained(model_name)
-llm = AutoModelForCausalLM.from_pretrained(model_name, torch_dtype=torch.float16, device_map="auto")
+llm = AutoModelForCausalLM.from_pretrained(model_name)
 
 
 # In[14]:
