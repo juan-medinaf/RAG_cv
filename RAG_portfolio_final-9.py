@@ -97,7 +97,10 @@ for k, val in resume_dict.items():
 
 device = torch.device("cpu")
 # Load pre-trained embedding model
-model = SentenceTransformer("all-MiniLM-L6-v2")
+word_embedding_model = SentenceTransformer("all-MiniLM-L6-v2")
+pooling_model = models.Pooling(word_embedding_model.get_word_embedding_dimension())
+
+model = SentenceTransformer(modules=[word_embedding_model, pooling_model])
 
 # Generate embeddings
 resume_embeddings = model.encode(resume_chunks)
