@@ -5,4 +5,3 @@ streamlit
 transformers
 pandas
 numpy
-os
