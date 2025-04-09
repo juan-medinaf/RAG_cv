@@ -12,7 +12,7 @@ import pandas as pd
 import numpy as np
 import fitz
 import re
-from sentence_transformers import SentenceTransformer
+from sentence_transformers import SentenceTransformer, models
 import torch
 
 # In[2]:
